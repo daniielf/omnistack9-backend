@@ -30,5 +30,11 @@ module.exports = {
       console.log('SpotController', 'Get_One', e);
       return res.status(400).json({ ok: false, error: 'Não foi possível encontrar esse Spot' });   
     }
+  },
+
+  async SEARCH(req, res) {
+    const techArray = req.body.techs.split(',').map((elem) => elem.trim());
+    const spots = await Spot.find({ techs: { $in: techArray} });
+    return res.json({ok: true, spots });
   }
 };

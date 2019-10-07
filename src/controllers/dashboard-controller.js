@@ -1,9 +1,9 @@
 const Spot = require('../models/Spot');
 
 module.exports = {
-  async GET_ALL(req, res) {
-    const techArray = req.body.techs.split(',').map((elem) => elem.trim());
-    const spots = await Spot.find({ techs: { $in: techArray} });
-    return res.json({ok: true, spots });
+  async SHOW(req, res) {
+    const user_id = req.headers.user_id;
+    const spots = await Spot.find({ usuario: user_id });
+    return res.json({ok: true, size: spots.length, spots });
   }
 };
