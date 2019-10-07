@@ -36,6 +36,7 @@ build/Release
 node_modules/
 jspm_packages/
 access.js
+uploads/
 
 # TypeScript v1 declaration files
 typings/
